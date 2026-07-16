@@ -26,4 +26,12 @@ public class ProductServiceImpl implements ProductService {
         System.out.println(products);
         return products;
     }
+
+    @Override
+    public boolean deleteProductById(int id) {
+        return products.removeIf(product -> product.getId() == id);
+
+    }
+
+
 }

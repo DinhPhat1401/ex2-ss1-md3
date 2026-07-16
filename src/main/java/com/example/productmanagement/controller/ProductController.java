@@ -4,9 +4,7 @@ import com.example.productmanagement.model.entity.Product;
 import com.example.productmanagement.serivce.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,5 +17,14 @@ public class ProductController {
     @GetMapping()
     public ResponseEntity<List<Product>> getAllProducts(){
         return ResponseEntity.ok(productService.getAllProducts());
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteProductById(@PathVariable("id") int id){
+        boolean isDeleted = productService.deleteProductById(id);
+        if (isDeleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

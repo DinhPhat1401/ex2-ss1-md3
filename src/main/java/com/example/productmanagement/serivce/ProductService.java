@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ProductService {
     public List<Product> getAllProducts();
+    public boolean deleteProductById(int id);
 }
