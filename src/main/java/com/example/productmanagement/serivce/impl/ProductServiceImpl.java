@@ -10,16 +10,19 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-
-    @Override
-    public List<Product> getAllProducts() {
-       List<Product> products = new ArrayList<>();
+    private static List<Product> products = new ArrayList<>();
+    static {
+        List<Product> products = new ArrayList<>();
         Product product1 = new Product(1,"iPhone 14 Pro Max",15000000.00);
         Product product2 = new Product(2,"MacBook Pro 16",20000000.00);
         Product product3 = new Product(3,"iPad Pro 12.9",10000000.00);
         products.add(product1);
         products.add(product2);
         products.add(product3);
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
         return products;
     }
 }
